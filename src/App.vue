@@ -2,31 +2,33 @@
   <div>
     <header>
       <nav>
-        <button :class="{ active: currentView === 'todos' }" @click="currentView = 'todos'">Todos</button>
-        <button :class="{ active: currentView === 'posts' }" @click="currentView = 'posts'">Post</button>
+        <button :class="{ active: currentView === 'todos' }" @click="navigateTo('/todos')">Todos</button>
+        <button :class="{ active: currentView === 'posts' }" @click="navigateTo('/posts')">Post</button>
+        <button :class="{ active: currentView === 'albums' }" @click="navigateTo('/albums')">Album Foto</button>
       </nav>
     </header>
     <main>
-      <Todos v-if="currentView === 'todos'" />
-      <Posts v-else />
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import Todos from './components/Todos.vue';
-import Posts from './components/Posts.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'App',
-  components: {
-    Todos,
-    Posts,
-  },
   setup() {
     const currentView = ref('todos');
-    return { currentView };
+    const router = useRouter();
+
+    const navigateTo = (view) => {
+      currentView.value = view;
+      router.push(view);
+    };
+
+    return { currentView, navigateTo };
   },
 };
 </script>
