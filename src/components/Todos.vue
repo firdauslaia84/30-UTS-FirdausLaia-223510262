@@ -71,7 +71,7 @@ export default {
 
 <style scoped>
 .container {
-  background-color: #fff;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,7 +150,7 @@ button.delete:hover {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-radius: 5px;
   margin-bottom: 10px;
   transition: background-color 0.3s;
