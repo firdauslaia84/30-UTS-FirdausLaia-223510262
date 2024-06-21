@@ -5,13 +5,13 @@
       <option value="">Pilih Pengguna</option>
       <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
     </select>
-    <div v-if="posts.length">
+    <div v-if="posts.length" class="posts-container">
       <div v-for="post in posts" :key="post.id" class="post-item">
         <h2>{{ post.title }}</h2>
         <p>{{ post.body }}</p>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="no-posts">
       <p>Tidak ada postingan untuk pengguna yang dipilih.</p>
     </div>
   </div>
@@ -55,23 +55,26 @@ export default {
 
 <style scoped>
 .container {
-  background-color: #fff;
+  background-color: #e0f7fa;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
-  transition: transform 0.3s ease-in-out;
+  max-width: 800px;
+  margin: auto;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .container:hover {
   transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
-  color: #333333;
+  color: #007bff;
+  text-align: center;
 }
 
 select {
@@ -88,17 +91,38 @@ select:focus {
   outline: none;
 }
 
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .post-item {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.post-item:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
 .post-item h2 {
-  font-size: 18px;
+  font-size: 22px;
   margin: 0 0 10px 0;
+  color: #007bff;
 }
 
 .post-item p {
   margin: 0;
+  color: #555;
+}
+
+.no-posts {
+  text-align: center;
+  color: #007bff;
+  font-size: 18px;
 }
 </style>
